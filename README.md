@@ -94,169 +94,128 @@ If paddles do nothing, try tapping [ and ] on your keyboard manually. If that wo
 ## Radio and audio wiring
 You will need:
 
--A USB sound interface connected to the mic input or data port of your FM radio.
--A USB to serial adapter (or similar) wired so that the RTS line keys PTT.
+- A USB sound interface connected to the mic input or data port of your FM radio.
+- A USB to serial adapter (or similar) wired so that the RTS line keys PTT.
 
 Typical flow:
 
-+ Computer audio out (USB soundcard)
+1. Computer audio out (USB soundcard)
 → audio in on radio (mic, data, or accessory port).
-
-+ USB serial adapter RTS
+2 USB serial adapter RTS
 → PTT input on radio (follow the PTT wiring for your radio, usually open collector to ground).
 
 Level setting:
 
-Keep the app output level low. Values around 0.005 to 0.02 tend to behave best.
+- Keep the app output level low. Values around 0.005 to 0.02 tend to behave best.
+- Then adjust your soundcard output level and radio mic gain for a clean sounding tone.
 
-Then adjust your soundcard output level and radio mic gain for a clean sounding tone.
-
-Running the program
+# Running the program
 From an activated virtual environment:
 
-bash
-Copy code
+````bash
 python cw_repeater_keyer.py
+````
 You should see the CW Repeater Keyer window.
 
-Basic configuration
-Audio output device
-
-Choose the sound device that feeds your radio or speakers.
-
-For local speakers this is usually something like sysdefault or pulse.
-
-PTT serial port
-
-Choose the serial device that controls PTT (/dev/ttyUSB0, /dev/ttyACM0, etc).
-
-This is only used when bypass is off.
-
-Bypass PTT (speaker practice)
-
-Checked: Tone goes straight to speakers. No PTT. Serial port is ignored.
-
-Unchecked: Tone only goes out when PTT is on and tone is active.
-
-Keyer mode
-
-Straight: Tone follows paddle timing directly.
-
-Iambic: Simple iambic timing, WPM controlled by the app.
-
-Speed (WPM)
-
-Dit length is 1.2 / WPM seconds.
-
-Dah is 3 dits. Element gaps are 1 dit.
-
-Tone frequency (Hz)
-
-Common values: 500, 600, 700, 800.
-
-Output level (0.000 – 0.200)
-
-Master amplitude of the sine wave.
-
-For computer speakers: try 0.05 to 0.15.
-
-For FM radio: start around 0.01, adjust down if audio still sounds squashed.
+# Basic configuration
+1. Audio output device
+ - Choose the sound device that feeds your radio or speakers.
+ - For local speakers this is usually something like sysdefault or pulse.
+2. PTT serial port
+ - Choose the serial device that controls PTT (/dev/ttyUSB0, /dev/ttyACM0, etc).
+ - This is only used when bypass is off.
+3. Bypass PTT (speaker practice)
+ - Checked: Tone goes straight to speakers. No PTT. Serial port is ignored.
+ - Unchecked: Tone only goes out when PTT is on and tone is active.
+4. Keyer mode
+ - Straight: Tone follows paddle timing directly.
+ - Iambic: Simple iambic timing, WPM controlled by the app.
+5. Speed (WPM)
+ - Dit length is 1.2 / WPM seconds.
+ - Dah is 3 dits. Element gaps are 1 dit.
+6. Tone frequency (Hz)
+  - Common values: 500, 600, 700, 800.
+7. Output level (0.000 – 0.200)
+ - Master amplitude of the sine wave.
+ - For computer speakers: try 0.05 to 0.15.
+ - For FM radio: start around 0.01, adjust down if audio still sounds squashed.
 
 When settings look correct, click Apply settings.
 
-Using the app
-Radio mode (repeater use)
-Uncheck Bypass PTT.
+## Using the app
+### Radio mode (repeater use)
+1. Uncheck Bypass PTT.
+2. Select:
+ - Audio device feeding the radio.
+ - Serial port for PTT.
+3. Set WPM, tone, and a conservative output level (for example 0.009).
+4. Click Apply settings.
+5. Click PTT (toggle) or press the space bar to key the radio:
+ - PTT toggles on and off.
+ - Status shows “Transmitting CW” while PTT is on.
+6. Use your paddle on the vBand keyer to send CW.
 
-Select:
+# Practice mode (local speakers)
+1. Select your speaker output device in the audio device list.
+2. Check Bypass PTT (speaker practice).
+3. Click Apply settings.
+4. Key with the paddle. The tone should come out of your speakers with no PTT and no serial requirement.
 
-Audio device feeding the radio.
-
-Serial port for PTT.
-
-Set WPM, tone, and a conservative output level (for example 0.009).
-
-Click Apply settings.
-
-Click PTT (toggle) or press the space bar to key the radio:
-
-PTT toggles on and off.
-
-Status shows “Transmitting CW” while PTT is on.
-
-Use your paddle on the vBand keyer to send CW.
-
-Practice mode (local speakers)
-Select your speaker output device in the audio device list.
-
-Check Bypass PTT (speaker practice).
-
-Click Apply settings.
-
-Key with the paddle. The tone should come out of your speakers with no PTT and no serial requirement.
-
-Key mapping summary
-Dit:
-
-[ key
-
-left Control key
-
-Dah:
-
-] key
-
-right Control key
+# Key mapping summary
+- Dit:
+  - [ key
+- Dah:
+  - ] key
 
 You can also use a regular keyboard for testing before plugging in the vBand dongle.
 
-Tips for clean audio on FM
+# Tips for clean audio on FM
 FM rigs and repeaters often have aggressive audio processing. To reduce “wah wit wah” sounding CW on the air:
-
-Keep the output level in the app low (0.005 to 0.02).
-
-Turn off any speech processor or compressor in the radio.
-
-Use a moderate tone frequency (500 to 700 Hz).
-
-Do on air checks at different levels:
-
-If audio gets cleaner as you lower the level, you were overdriving the radio.
-
-Many rigs behave best with surprisingly low input from the soundcard.
+- Keep the output level in the app low (0.005 to 0.02).
+- Turn off any speech processor or compressor in the radio.
+- Use a moderate tone frequency (500 to 700 Hz).
+- Do on air checks at different levels:
+-- If audio gets cleaner as you lower the level, you were overdriving the radio.
+-- Many rigs behave best with surprisingly low input from the soundcard.
 
 One tested rig sounded cleanest around an app output level of 0.009.
 
-Troubleshooting
+## Troubleshooting
 No tone at all
-
-Make sure the correct audio device is selected and you clicked Apply settings.
-
-Ensure the GUI window has focus, then tap [ and ] on the keyboard.
-
-In radio mode, make sure Bypass is unchecked and PTT is on.
+- Make sure the correct audio device is selected and you clicked Apply settings.
+- Ensure the GUI window has focus, then tap [ and ] on the keyboard.
+- In radio mode, make sure Bypass is unchecked and PTT is on.
 
 No PTT
-
-Confirm the correct serial port.
-
-Click Apply settings after selecting the port.
-
-Verify that RTS on the adapter is actually wired to the PTT line.
+- Confirm the correct serial port.
+- Click Apply settings after selecting the port.
+- Verify that RTS on the adapter is actually wired to the PTT line.
 
 Paddles not doing anything
+- Confirm the app window has focus.
+- Tap [ and ] on the physical keyboard. If those work, check what keys the vBand dongle is really sending.
+- Check that your desktop environment is not intercepting those keys for hotkeys.
 
-Confirm the app window has focus.
+#License
+MIT License
 
-Tap [ and ] on the physical keyboard. If those work, check what keys the vBand dongle is really sending.
+Copyright (c) 2025  Gregory P. Cheng KC3SMW
 
-Check that your desktop environment is not intercepting those keys for hotkeys.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to
+deal in the Software without restriction, including without limitation the
+rights to use, copy, modify, merge, publish, distribute, sublicense, and/ or
+sell copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-License
-Add your preferred license here.
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
 
-pgsql
-Copy code
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+IN THE SOFTWARE.
 
-You can adjust wording, the preferred default output level, and any radio specific tips to match what you observe on your own repeater setup.
-::contentReference[oaicite:0]{index=0}
