@@ -43,6 +43,7 @@ On Debian or Ubuntu you will probably need:
 
 ```bash
 sudo apt install python3-venv python3-tk python3-dev portaudio19-dev
+
 Setting up a Python virtual environment
 From the project root (where cw_repeater_keyer.py lives):
 
