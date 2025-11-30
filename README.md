@@ -49,7 +49,6 @@ Setting up a Python virtual environment
 From the project root (where cw_repeater_keyer.py lives):
 
 ````bash
-Copy code
 python3 -m venv .venv
 source .venv/bin/activate
 ````
@@ -57,56 +56,53 @@ You should now see something like (.venv) at the start of your shell prompt.
 
 Install the Python dependencies:
 
-bash
-Copy code
+````bash
 pip install --upgrade pip
 pip install sounddevice numpy pyserial
+````
 To leave the virtual environment later:
 
-bash
-Copy code
+````bash
 deactivate
+````
 Each time you want to run the program in a new shell:
 
-bash
-Copy code
+````bash
+
 cd /path/to/this/project
 source .venv/bin/activate
 python cw_repeater_keyer.py
-vBand USB keyer setup
+````
+## vBand USB keyer setup
 The Ham Radio Solutions vBand USB paddle interface appears as a USB keyboard.
 
 By default it sends keystrokes such as [ and ] (and sometimes Control keys) when you press the paddles.
 
 This app listens for:
 
-Dit paddle: [ or Left Control
-
-Dah paddle: ] or Right Control
+-Dit paddle: [ or Left Control 
+-Dah paddle: ] or Right Control
 
 So the setup is usually:
 
-Plug in the vBand USB keyer.
-
-Make sure your window manager is not binding [ or ] or Control combinations to any global shortcuts.
-
-Give focus to the CW Keyer window before sending with the paddles.
+1. Plug in the vBand USB keyer.
+2. Make sure your window manager is not binding [ or ] or Control combinations to any global shortcuts.
+3. Give focus to the CW Keyer window before sending with the paddles.
 
 If paddles do nothing, try tapping [ and ] on your keyboard manually. If that works, the vBand dongle should work once focus is on the keyer window.
 
-Radio and audio wiring
+## Radio and audio wiring
 You will need:
 
-A USB sound interface connected to the mic input or data port of your FM radio.
-
-A USB to serial adapter (or similar) wired so that the RTS line keys PTT.
+-A USB sound interface connected to the mic input or data port of your FM radio.
+-A USB to serial adapter (or similar) wired so that the RTS line keys PTT.
 
 Typical flow:
 
-Computer audio out (USB soundcard)
++ Computer audio out (USB soundcard)
 → audio in on radio (mic, data, or accessory port).
 
-USB serial adapter RTS
++ USB serial adapter RTS
 → PTT input on radio (follow the PTT wiring for your radio, usually open collector to ground).
 
 Level setting:
