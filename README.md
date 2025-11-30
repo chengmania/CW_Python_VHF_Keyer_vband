@@ -9,6 +9,8 @@ This project lets you send manual or iambic CW over an FM rig or repeater using:
 
 You can also use it in **speaker practice mode** with no radio at all.
 
+When Using in FM have an HT handy to monitor your signal. If going over the repeater have the HT in simplex on the repeater input freq.
+
 ---
 
 ## Features
