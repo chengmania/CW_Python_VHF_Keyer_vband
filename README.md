@@ -2,7 +2,7 @@
 
 This project lets you send manual or iambic CW over an FM rig or repeater using:
 
-- A **Ham Radio Solutions vBand USB keyer** ([keyboard style dongle](https://hamradio.solutions/vband/)
+- A **Ham Radio Solutions vBand USB keyer** [keyboard style dongle](https://hamradio.solutions/vband/
 - A **USB audio interface** into your radio
 - A **serial PTT interface** (RTS line)
 - A **Python keyer app** with straight and iambic modes
